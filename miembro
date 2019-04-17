@@ -1,0 +1,26 @@
+#lang racket
+
+
+#|
+
+Oscar Isaac Porras Perez - 2017107550
+
+
+Funcion llamada miembro que busca un elemento dentro de una lista
+params: num , es el numero que se busca
+        lista , la lista en la cual se va a buscar
+
+|#
+
+
+
+(define (miembro lista buscado)
+  (cond
+    [(= (length lista) 0) "No se encontro el elemento"]
+    [(= (car lista) buscado) "El elemento si se encuentra"]
+    [else (miembro (cdr lista) buscado)]
+  )
+)
+
+(miembro (list 1 2 3 4) 10)
+

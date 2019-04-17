@@ -1,0 +1,31 @@
+#lang racket
+
+
+#|
+
+Oscar Isaac Porras Perez - 2017107550
+
+
+Funcion llamada eliminar que elimina todas las ocurrencias de un elemento en una lista
+params: num , es el numero que se quiere eliminar
+        lista , la lista de la que se quiere eliminar
+return : retorna la lista sin elemento
+|#
+
+
+(define ( eliminar num lista)
+  (cond
+    [(null? lista) '()]
+    [(= num (car lista)) (eliminar num (cdr lista))]
+    [else (cons (car lista) (eliminar num (cdr lista) ) )]
+
+
+
+    )
+
+
+
+ )
+
+
+(eliminar 6 (list 1 2 3 4 5 6))

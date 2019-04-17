@@ -1,0 +1,45 @@
+#lang racket
+
+
+
+
+#|
+
+Oscar Isaac Porras Perez - 2017107550
+
+
+Funcion llamada fictorial
+params: n , es el numero que se le quiere calcular el factorial
+       
+return : retorna el resultado de la serie factorial
+|#
+
+(define (factorial n)
+  (cond
+    [(= n 1) 1 ]
+    [else  (* n (factorial (- n 1)))]
+
+
+
+
+
+  )
+)
+
+(factorial 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

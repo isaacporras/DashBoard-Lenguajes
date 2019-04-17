@@ -1,0 +1,30 @@
+#lang racket
+
+
+
+#|
+
+Oscar Isaac Porras Perez - 2017107550
+
+
+Funcion llamada fibonnacci 
+params: n , es el numero que se le quiere calcular el fibonnacci
+       
+return : retorna el resultado de la sucesion fibonnacci
+|#
+
+
+(define (fibonnacci  n)
+
+  (cond
+    [( = n 1) 1]
+    [(= n 0) 0]
+    [else (+ (fibonnacci (- n 1)) (fibonnacci (- n 2))  )]
+
+
+    )
+
+)
+
+
+(fibonnacci 8)
