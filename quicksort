@@ -1,0 +1,25 @@
+#lang racket
+
+
+
+
+
+(define (qs lista)
+  (cond
+    [(null? lista) (list)]
+    [else (qs_aux (cdr lista) (car lista) '() '())]
+  )
+)
+
+(define(qs_aux list pivote menores mayores)
+  (cond
+    [(null? list) (append (qs menores) (cons pivote (qs mayores)))]
+    [(<= (car list) pivote) (qs_aux (cdr list) pivote ( cons (car list) menores) mayores)]
+    [else (qs_aux (cdr list) pivote menores (cons (car list) mayores))]
+
+
+
+    )
+)
+
+(qs '(1 9 5 2 8))
