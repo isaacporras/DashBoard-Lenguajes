@@ -1,0 +1,89 @@
+#lang racket
+
+
+
+
+(define(eliminar_arbol arbol elemento)
+  (cond
+    [(= (get_root arbol) elemento) (eliminar_aux arbol)]
+    [(> (get_root arbol) elemento) (list (get_root arbol)(eliminar_arbol (cadr arbol) elemento) (caddr arbol))]
+    [(< (get_root arbol) elemento) (list (get_root arbol) (cadr arbol) (eliminar_arbol (caddr arbol) elemento))]
+    )
+
+  )
+(define (eliminar_aux arbol)
+  (cond
+    [(es_hoja arbol (car arbol)) (eliminar_hoja arbol)]
+    [else (list (get_mayor arbol) (cadr arbol) (eliminar_arbol (caddr arbol) (get_mayor arbol) ))]
+    
+    )
+  )
+
+(define (get_menor arbol)
+  (cond
+    [(empty? (cadr arbol)) (car arbol)]
+    [else (get_menor (cadr arbol))]
+
+
+    )
+
+  )
+
+
+(define (get_mayor arbol)
+  (cond
+    [(empty? (caddr arbol)) (car arbol)]
+    [(tiene_hijo_der arbol (car arbol))(get_mayor (caddr arbol))]
+    [else (get_mayor (cadr arbol))]
+
+
+    )
+
+  )
+(define (get_root arbol)(car arbol))
+
+(define (tiene_hijo_izq arbol elemento)
+  (cond
+    [(= (get_root arbol) elemento) (tiene_hijo_izq_aux (cadr arbol))]
+    [(> (get_root arbol) elemento) (tiene_hijo_izq (cadr arbol) elemento)]
+    [(< (get_root arbol) elemento) (tiene_hijo_izq (caddr arbol) elemento)]
+    [else "error"]
+    )
+  )
+
+(define (tiene_hijo_der arbol elemento)
+  (cond
+    [(= (get_root arbol) elemento) (tiene_hijo_der_aux (caddr arbol))]
+    [(> (get_root arbol) elemento) (tiene_hijo_der (cadr arbol) elemento)]
+    [(< (get_root arbol) elemento) (tiene_hijo_der (caddr arbol) elemento)]
+    [else "error"]
+    
+
+    )
+  )
+(define (tiene_hijo_der_aux nodo)
+  (cond
+    [(empty? nodo)#f]
+    [else #t]  
+  ))
+
+(define (tiene_hijo_izq_aux nodo)
+  (cond
+    [(empty? nodo)#f]
+    [else #t]
+    )
+  )
+(define (es_hoja arbol elemento)
+  (cond
+    [(tiene_hijo_der arbol elemento) #f ]
+    [(tiene_hijo_izq arbol elemento) #f]
+    [else #t])
+  )
+(define (eliminar_hoja arbol)
+  '()
+  )
+
+(eliminar_arbol '(20 (10 (           5  () ()           ) (         11 ( ) ( )         ))              (30 () ()))   10)
+
+
+
