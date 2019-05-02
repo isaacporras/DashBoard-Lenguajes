@@ -1,0 +1,27 @@
+#lang racket
+
+
+
+varon(albert).
+varon(edward).
+
+mujer(alice).
+mujer(victoria).
+
+padres(edward , victoria , albert).
+padres(alice, victoria, albert).
+
+hermana_de(X, Y):- padres(X, A ,B), padres(Y, A ,B), mujer(X).
+
+
+
+varon(albert).
+varon(edward).
+
+mujer(alice).
+mujer(victoria).
+
+padres(edward , victoria , albert).
+padres(alice, victoria, albert).
+
+hermana_de(X, Y):- padres(X, A ,B), padres(Y, A ,B), mujer(X), not(X=Y).
