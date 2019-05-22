@@ -1,0 +1,16 @@
+#lang racket
+
+
+
+(define (auto atributos parametros)
+  (cond
+    [(null? atributos) '()]
+    [(null? parametros) '()]
+    [ else (cons (list (car atributos) (car parametros)) (auto (cdr atributos) (cdr parametros) ))]
+    ))
+    
+
+  
+
+
+(auto '(marca año) '(hyundai 2001))
